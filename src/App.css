@@ -1,0 +1,12 @@
+.app {
+  width: 100%;
+  height: 100vh;
+}
+.anas {
+  background: url("./images/bg-triangle.svg") no-repeat;
+  background-position: bottom center;
+  background-size: 70%;
+}
+.box-shadow {
+  background: #eca922;
+}
