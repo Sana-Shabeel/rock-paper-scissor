@@ -2,33 +2,26 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    screens: {
-      sm: "375px",
-      // => @media (min-width: 640px) { ... }
-
-      md: "768px",
-      // => @media (min-width: 768px) { ... }
-
-      lg: "1024px",
-      // => @media (min-width: 1024px) { ... }
-
-      xl: "1280px",
-      // => @media (min-width: 1280px) { ... }
-
-      "2xl": "1536px",
-      // => @media (min-width: 1536px) { ... }
-    },
-
     colors: {
-      radialGradient: "#1f3756 to #141539",
-      white: "#fff",
-      softWhite: "hsl(217, 16%, 45%)",
-      purple: "#1f3756",
-      pink: "#141539",
+      scsrGradient: "hsl(39, 89%, 49%) to hsl(40, 84%, 53%)",
+      paprGradient: "hsl(230, 89%, 62%) to hsl(230, 89%, 65%)",
+      rockGradient: "hsl(349, 71%, 52%) to hsl(349, 70%, 56%)",
+      lizardGradient: "hsl(261, 73%, 60%) to hsl(261, 72%, 63%)",
+      radialGradient: {
+        100: "hsl(214, 47%, 23%)",
+        200: "hsl(237, 49%, 15%)",
+      },
+      cyan: {
+        100: "hsl(189, 59%, 53%)",
+        200: "hsl(189, 58%, 57%)",
+      },
+      darkText: "hsl(229, 25%, 31%)",
       scoreText: "hsl(229, 64%, 46%)",
-      black: "#000",
-      yellow: "#ffc82c",
-      gray: "#8492a6",
+      headerOutline: "hsl(217, 16%, 45%)",
+      scoreBoard: "#FAFAFA",
+    },
+    fontFamily: {
+      barlow: "'Barlow Semi Condensed', sans-serif",
     },
 
     extend: {
@@ -37,10 +30,13 @@ module.exports = {
       },
       boxShadow: {
         "3xl": "inset 0px 10px 0px 3px #E2E2E2",
-        paper:
+        "4xl":
           "0 8px 0 0 hsl(231deg 94% 42%), inset 0 6px 3px 0 hsl(240deg 1% 63%)",
-        rock: "0 8px 0 0 hsl(231deg 94% 42%), inset 0 6px 3px 0 hsl(240deg 1% 63%)",
-        scsr: "0 8px 0 0 hsl(231deg 94% 42%), inset 0 6px 3px 0 hsl(240deg 1% 63%)",
+        "5xl":
+          "0 6px 0 0 hsl(40deg 94% 40%), inset 0 6px 3px 0 hsl(240deg 1% 63%)",
+        "6xl":
+          "0 6px 0 0 hsl(350deg 94% 32%), inset 0 6px 3px 0 hsl(240deg 1% 63%)",
+        "7xl": "1px 6px 3px 25px rgba(0,0,0,0.14)",
       },
     },
   },
