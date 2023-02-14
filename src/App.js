@@ -1,14 +1,9 @@
-import "./App.css";
-import Header from "./components/Header";
-import RockPprscr from "./components/RockPprscr";
-import Rules from "./components/Rules";
+import ScoreBoard from "./components/ScoreBoard";
 
 function App() {
   return (
-    <div className="app bg-gradient-to-r from-purple to-pink w-screen pt-3	h-full">
-      <Header />
-      <RockPprscr />
-      <Rules />
+    <div className="app min-h-screen bg-gradient-to-r from-radialGradient-100 to-radialGradient-200 pt-6 font-barlow">
+      <ScoreBoard />
     </div>
   );
 }
