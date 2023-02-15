@@ -3,10 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
-      scsrGradient: "hsl(39, 89%, 49%) to hsl(40, 84%, 53%)",
-      paprGradient: "hsl(230, 89%, 62%) to hsl(230, 89%, 65%)",
-      rockGradient: "hsl(349, 71%, 52%) to hsl(349, 70%, 56%)",
-      lizardGradient: "hsl(261, 73%, 60%) to hsl(261, 72%, 63%)",
+      scsrGradient: "#eca922",
+      blue: "#5671f5",
+      red: "#dd405d",
       radialGradient: {
         100: "hsl(214, 47%, 23%)",
         200: "hsl(237, 49%, 15%)",
@@ -19,6 +18,7 @@ module.exports = {
       scoreText: "hsl(229, 64%, 46%)",
       headerOutline: "hsl(217, 16%, 45%)",
       scoreBoard: "#FAFAFA",
+      white: "#FFF",
     },
     fontFamily: {
       barlow: "'Barlow Semi Condensed', sans-serif",
@@ -27,6 +27,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "bg-triangle": "url('./src/images/bg-triangle.svg')",
+        rock: "linear-gradient(15deg, rgba(221,64,93,1) 0%, rgba(220,46,78,1) 100%)",
       },
       boxShadow: {
         "3xl": "inset 0px 10px 0px 3px #E2E2E2",
