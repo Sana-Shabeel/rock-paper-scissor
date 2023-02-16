@@ -8,6 +8,7 @@ function App() {
   const [playerchoice, setPlayerchoice] = useState({
     className: "",
     img: "",
+    sign: "",
   });
 
   //const [score, setScore] = useState(0);
@@ -25,7 +26,11 @@ function App() {
         <Route
           path="/result"
           element={
-            <Result className={playerchoice.className} img={playerchoice.img} />
+            <Result
+              className={playerchoice.className}
+              img={playerchoice.img}
+              sign={playerchoice.sign}
+            />
           }
         />
       </Routes>
