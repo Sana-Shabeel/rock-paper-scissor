@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import HandOption from "./HandOption";
 import { classes } from "../Utils/Classes";
 
@@ -34,17 +35,17 @@ const Result = ({ className, img, sign }) => {
       case "scissorpaper":
       case "rockscissor":
       case "paperrock":
-        setResult("YOU WIN!");
+        setResult("YOU WIN");
         break;
       case "paperscissor":
       case "scissorrock":
       case "rockpaper":
-        setResult("YOU LOSE!");
+        setResult("YOU LOSE");
         break;
       case "rockrock":
       case "paperpaper":
       case "scissorscissor":
-        setResult("ITS A DRAW!");
+        setResult("ITS A DRAW");
         break;
     }
   }, [sign, computerResult]);
@@ -69,23 +70,58 @@ const Result = ({ className, img, sign }) => {
   console.log(result);
 
   return (
-    <div className="flex item-center justify-around mt-12 md:w-3/5 mx-auto">
-      {timer > 0 ? (
-        <div className="flex item-center">
-          <HandOption className={className} img={img} />
-          <div className="bg-timerColor w-32 h-32 rounded-full  cursor-pointer md:w-40 md:h-40 lg:w-48 lg:h-48 self-center"></div>
-        </div>
-      ) : (
-        <div className="flex item-center">
-               <div className="shadow-win rounded-full">
-          <HandOption className={className} img={img} />
-                    </div>
+    <div className="grid h-96 place-items-center md:mt-20">
+      <div className="relative mx-auto flex  items-center justify-around">
+        {timer > 0 ? (
+          <div className="flex items-center  gap-4">
+            <HandOption className={className} img={img} />
+            <div className="grid h-32 w-32 cursor-pointer place-items-center self-center  rounded-full bg-timerColor md:h-40 md:w-40 lg:h-48 lg:w-48">
+              <h1 className="font-barlow text-7xl font-bold text-white">
+                {timer}
+              </h1>
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center justify-between gap-20">
+            <div className="md:flex md:flex-col-reverse">
+              <div
+                className={`${
+                  result === "YOU WIN" ? "shadow-win" : ""
+                } rounded-full`}
+              >
+                <HandOption className={className} img={img} />
+              </div>
+              <h1 className="my-8 whitespace-pre text-center font-barlow text-lg font-semibold text-white">
+                YOU PICKED
+              </h1>
+            </div>
 
-          <h1>{result}</h1>
-     
-            <HandOption className={classImage.div} img={classImage.img} />
-        </div>
-      )}
+            <div className="absolute -bottom-32 left-16 flex flex-col items-center gap-2 md:relative md:left-0 md:top-0 md:self-center">
+              <h1 className="mx-6 whitespace-pre font-barlow text-4xl font-bold text-white	 ">
+                {result}
+              </h1>
+              <Link to={"/"}>
+                <button className="rounded-md bg-white py-2 px-8">
+                  PLAY AGAIN
+                </button>
+              </Link>
+            </div>
+
+            <div className="md:flex md:flex-col-reverse">
+              <div
+                className={`${
+                  result === "YOU LOSE" ? "shadow-win" : ""
+                } rounded-full`}
+              >
+                <HandOption className={classImage.div} img={classImage.img} />
+              </div>
+              <h1 className="my-8 whitespace-pre text-center font-barlow text-lg font-semibold text-white">
+                THE HOUSE PICKED
+              </h1>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
