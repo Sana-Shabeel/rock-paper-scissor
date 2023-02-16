@@ -19,6 +19,7 @@ module.exports = {
       headerOutline: "hsl(217, 16%, 45%)",
       scoreBoard: "#FAFAFA",
       white: "#FFF",
+      timerColor: "#101a2c",
     },
     fontFamily: {
       barlow: "'Barlow Semi Condensed', sans-serif",
@@ -36,7 +37,7 @@ module.exports = {
         scissor:
           "0 6px 0 0 hsl(40deg 94% 40%), inset 0 6px 3px 0 hsl(240deg 1% 63%)",
         rock: "0 6px 0 0 hsl(350deg 94% 32%), inset 0 6px 3px 0 hsl(240deg 1% 63%)",
-        "7xl": "1px 6px 3px 25px rgba(0,0,0,0.14)",
+        win: "inset 0 5px 6px grey, 0 8px transparent, 0 0 0 50px hsl(0deg 0% 100% / 7%), 0 0 0 100px hsl(0deg 0% 100% / 5%), 0 0 0 150px hsl(0deg 0% 100% / 3%)",
       },
     },
   },
