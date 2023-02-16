@@ -2,49 +2,90 @@ import React, { useEffect, useState } from "react";
 import HandOption from "./HandOption";
 import { classes } from "../Utils/Classes";
 
-const Result = ({ className, img }) => {
+const Result = ({ className, img, sign }) => {
   // compute the computers choice
-  const [compute, setCompute] = useState({
-    className: "",
-    img: "",
-  });
+  const [timer, setTimer] = useState(3);
+  const [result, setResult] = useState("");
+  const [computerResult, setComputerResult] = useState("");
 
-  const computerChoices = ["rock", "paper", "scissor"];
+  const [classImage, setClassImage] = useState({});
   const computerChooses = () => {
-    const chosen = Math.floor(Math.random() * computerChoices.length);
-    // console.log(computerChoices[chosen]);
-    if (computerChoices[chosen] === "paper") {
-      setCompute({
-        className: classes.paper.div,
-        img: classes.paper.img,
-      });
-      return classes.paper;
-    } else if (computerChoices[chosen] === "scissor") {
-      setCompute({
-        className: classes.scissor.div,
-        img: classes.scissor.img,
-      });
-      return classes.scissor;
-    } else if (computerChoices[chosen] === "rock") {
-      setCompute({
-        className: classes.rock.div,
-        img: classes.rock.img,
-      });
-      return classes.rock;
-    }
+    const choices = ["rock", "paper", "scissor"];
+    const chosen = Math.floor(Math.random() * choices.length);
+
+    // set the class name and image
+    setClassImage(classes[choices[chosen]]);
+
+    setComputerResult(choices[chosen]);
+
+    return chosen;
   };
 
-  // call the computer function on the first render
   useEffect(() => {
     computerChooses();
-    console.log(compute);
+    console.log(result);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    // eslint-disable-next-line default-case
+    switch (sign + computerResult) {
+      case "scissorpaper":
+      case "rockscissor":
+      case "paperrock":
+        setResult("YOU WIN!");
+        break;
+      case "paperscissor":
+      case "scissorrock":
+      case "rockpaper":
+        setResult("YOU LOSE!");
+        break;
+      case "rockrock":
+      case "paperpaper":
+      case "scissorscissor":
+        setResult("ITS A DRAW!");
+        break;
+    }
+  }, [sign, computerResult]);
+
+  // delay the computer choice by 3
+  useEffect(() => {
+    const countDown =
+      timer > 0
+        ? setInterval(() => {
+            setTimer(timer - 1);
+            console.log("Timer");
+          }, 1000)
+        : "";
+
+    return () => {
+      clearInterval(countDown);
+    };
+    // to avoid the effect running everytime the timer changes, we put up a conditional
+    // to check for if timer > 0
+  }, [classImage, timer]);
+
+  console.log(result);
+
   return (
-    <div className="flex item-center justify-around mt-12">
-      <HandOption className={className} img={img} />
-      <HandOption className={compute.className} img={compute.img} />
+    <div className="flex item-center justify-around mt-12 md:w-3/5 mx-auto">
+      {timer > 0 ? (
+        <div className="flex item-center">
+          <HandOption className={className} img={img} />
+          <div className="bg-timerColor w-32 h-32 rounded-full  cursor-pointer md:w-40 md:h-40 lg:w-48 lg:h-48 self-center"></div>
+        </div>
+      ) : (
+        <div className="flex item-center">
+               <div className="shadow-win rounded-full">
+          <HandOption className={className} img={img} />
+                    </div>
+
+          <h1>{result}</h1>
+     
+            <HandOption className={classImage.div} img={classImage.img} />
+        </div>
+      )}
     </div>
   );
 };
