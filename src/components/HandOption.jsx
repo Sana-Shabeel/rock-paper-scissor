@@ -4,7 +4,6 @@ const HandOption = ({ setPlayerchoice, className, img, sign }) => {
   // console.log("HandOption", className);
   return (
     <div
-      className=""
       onClick={() =>
         setPlayerchoice({
           className: className,
@@ -14,7 +13,7 @@ const HandOption = ({ setPlayerchoice, className, img, sign }) => {
       }
     >
       <div
-        className={`${className} bg-white w-32 h-32 rounded-full grid place-items-center  border-[1.3rem] shadow-4xl cursor-pointer md:w-40 md:h-40 lg:w-48 lg:h-48`}
+        className={`${className} grid h-32 w-32 cursor-pointer place-items-center rounded-full border-[1.3rem] bg-white md:h-40 md:w-40 lg:h-48 lg:w-48`}
       >
         <img src={img} alt="paper" />
       </div>
