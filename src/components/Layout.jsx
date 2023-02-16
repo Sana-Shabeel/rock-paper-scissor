@@ -5,8 +5,8 @@ import { classes } from "../Utils/Classes";
 
 const Layout = ({ setPlayerchoice }) => {
   return (
-    <div className="w-11/12 mx-auto mt-6 md:w-3/5 ">
-      <div className="flex justify-around mb-6">
+    <div className="mx-auto w-11/12 md:w-3/5">
+      <div className="mb-6 flex justify-around">
         <Link to={"/result"}>
           <HandOption
             setPlayerchoice={setPlayerchoice}
