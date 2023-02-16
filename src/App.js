@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
+import Rules from "./components/Rules";
 import Result from "./components/Result";
 import ScoreBoard from "./components/ScoreBoard";
 
@@ -16,7 +17,7 @@ function App() {
   // console.log(playerchoice.className);
 
   return (
-    <div className="app min-h-screen bg-gradient-to-r from-radialGradient-100 to-radialGradient-200 pt-6 font-barlow">
+    <div className="grid min-h-screen bg-gradient-to-r from-radialGradient-100 to-radialGradient-200 pt-6 font-barlow">
       <ScoreBoard />
       <Routes>
         <Route
@@ -34,6 +35,7 @@ function App() {
           }
         />
       </Routes>
+      <Rules />
     </div>
   );
 }
