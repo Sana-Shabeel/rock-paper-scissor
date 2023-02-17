@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import HandOption from "./HandOption";
+import HandOption from "../components/HandOption";
 import { classes } from "../Utils/Classes";
 
-const Result = ({ className, img, sign }) => {
+const Result = ({ className, img, sign, setScore }) => {
   // compute the computers choice
   const [timer, setTimer] = useState(3);
   const [result, setResult] = useState("");
@@ -57,6 +57,14 @@ const Result = ({ className, img, sign }) => {
         ? setInterval(() => {
             setTimer(timer - 1);
             console.log("Timer");
+            if (timer === 1) {
+              console.log(timer);
+              if (result === "YOU WIN") {
+                setScore((prev) => prev + 1);
+              } else if (result === "YOU LOSE") {
+                setScore((prev) => prev - 1);
+              }
+            }
           }, 1000)
         : "";
 
