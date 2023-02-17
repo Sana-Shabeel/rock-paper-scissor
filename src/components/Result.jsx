@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import HandOption from "../components/HandOption";
+import Rps from "../components/Rps";
 import { classes } from "../Utils/Classes";
 
 const Result = ({ className, img, sign, setScore }) => {
@@ -24,7 +24,6 @@ const Result = ({ className, img, sign, setScore }) => {
 
   useEffect(() => {
     computerChooses();
-    console.log(result);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -52,13 +51,13 @@ const Result = ({ className, img, sign, setScore }) => {
 
   // delay the computer choice by 3
   useEffect(() => {
+    // to avoid the effect running everytime the timer changes, we put up a conditional
+    // to check for if timer > 0
     const countDown =
       timer > 0
         ? setInterval(() => {
             setTimer(timer - 1);
-            console.log("Timer");
             if (timer === 1) {
-              console.log(timer);
               if (result === "YOU WIN") {
                 setScore((prev) => prev + 1);
               } else if (result === "YOU LOSE") {
@@ -71,18 +70,15 @@ const Result = ({ className, img, sign, setScore }) => {
     return () => {
       clearInterval(countDown);
     };
-    // to avoid the effect running everytime the timer changes, we put up a conditional
-    // to check for if timer > 0
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [classImage, timer]);
-
-  console.log(result);
 
   return (
     <div className="grid h-96 place-items-center md:mt-20">
       <div className="relative mx-auto flex  items-center justify-around">
         {timer > 0 ? (
           <div className="flex items-center  gap-4">
-            <HandOption className={className} img={img} />
+            <Rps className={className} img={img} />
             <div className="grid h-32 w-32 cursor-pointer place-items-center self-center  rounded-full bg-timerColor md:h-40 md:w-40 lg:h-48 lg:w-48">
               <h1 className="font-barlow text-7xl font-bold text-white">
                 {timer}
@@ -97,7 +93,7 @@ const Result = ({ className, img, sign, setScore }) => {
                   result === "YOU WIN" ? "shadow-win" : ""
                 } rounded-full`}
               >
-                <HandOption className={className} img={img} />
+                <Rps className={className} img={img} />
               </div>
               <h1 className="my-8 whitespace-pre text-center font-barlow text-lg font-semibold text-white">
                 YOU PICKED
@@ -121,7 +117,7 @@ const Result = ({ className, img, sign, setScore }) => {
                   result === "YOU LOSE" ? "shadow-win" : ""
                 } rounded-full`}
               >
-                <HandOption className={classImage.div} img={classImage.img} />
+                <Rps className={classImage.div} img={classImage.img} />
               </div>
               <h1 className="my-8 whitespace-pre text-center font-barlow text-lg font-semibold text-white">
                 THE HOUSE PICKED
