@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import Rules from "./components/Rules";
+import Rules from "./modal/Rules";
 import Result from "./components/Result";
 import ScoreBoard from "./components/ScoreBoard";
 
@@ -12,13 +12,11 @@ function App() {
     sign: "",
   });
 
-  //const [score, setScore] = useState(0);
-
-  // console.log(playerchoice.className);
+  const [score, setScore] = useState(0);
 
   return (
     <div className="grid min-h-screen bg-gradient-to-r from-radialGradient-100 to-radialGradient-200 pt-6 font-barlow">
-      <ScoreBoard />
+      <ScoreBoard score={score} />
       <Routes>
         <Route
           path="/"
@@ -31,6 +29,7 @@ function App() {
               className={playerchoice.className}
               img={playerchoice.img}
               sign={playerchoice.sign}
+              setScore={setScore}
             />
           }
         />
